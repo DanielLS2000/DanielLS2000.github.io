@@ -2124,9 +2124,10 @@ input, select, textarea {
 			}
 
 		.image.fit {
-			display: block;
+			display: flex;
 			margin: 0 0 2em 0;
 			width: 100%;
+
 		}
 
 			.image.fit img {
@@ -3219,3 +3220,10 @@ input, select, textarea {
 			}
 
 	}
+/* Lang Selection */
+.language-selector {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	z-index: 999;
+}
