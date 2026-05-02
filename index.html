@@ -1,156 +1,817 @@
-<!DOCTYPE HTML>
-<!--
-	Strata by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Daniel's Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html class="dark overflow-x-hidden" lang="pt-BR" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Daniel | Developer Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#00f0ff",
+                        "surface-variant": "#333539",
+                        "on-surface": "#e2e2e8",
+                        "on-surface-variant": "#b9cacb",
+                        "outline-variant": "#3b494b",
+                    },
+                    fontFamily: {
+                        "body-md": ["Inter"],
+                        "h2": ["Space Grotesk"],
+                        "code-sm": ["monospace"],
+                        "h3": ["Space Grotesk"],
+                        "h1": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { background-color: #0A0C10; color: #e2e2e8; }
+        
+        .glass-panel {
+            background-color: rgba(17, 20, 24, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(33, 38, 45, 0.8);
+            box-shadow: inset 0 0 0 1px rgba(0, 240, 255, 0.05);
+        }
+        
+        .neon-text { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+        .neon-border:hover {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            border-color: rgba(0, 240, 255, 0.8);
+        }
+        
+        .tech-grid {
+            background-image: 
+                linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .hero-mask {
+            background: radial-gradient(circle at center, transparent 0%, #0A0C10 80%);
+        }
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="https://www.linkedin.com/in/daniells2000/" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-					<h1><strong>Hi, i'm Daniel,<br />
-						a computer science student<br/>
-						always trying to learn more.</strong>
-					</h1>
-				</div>
-			</header>
-		<!-- Lang Selector -->
-			<div class="language-selector">
-				<a class="button" href="index_pt.html">Português</a>
-				<a class="button" href="index.html">English</a>
-			</div>
-		<!-- Main -->
-			<div id="main">
+        .btn-neon-hover:hover {
+            background-color: #00f0ff;
+            color: #0A0C10 !important;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+            border-color: transparent;
+        }
+        .btn-neon-hover:hover span, .btn-neon-hover:hover i, .btn-neon-hover:hover svg {
+            color: #0A0C10 !important;
+            fill: #0A0C10 !important;
+        }
 
-				<!-- One -->
-					<section id="one">
-						<header class="major">
-							<h2>A little about me.</h2>
-						</header>
-						<p>A Nerd by nature, I like to learn about the most diverse subjects within the field of computing, I started working with programming since I was a teenager creating mods for games. In 2021 I entered UFPI on the computer science course and have been deepening my knowledge in the area since then, Today my main working languages ​​are Python, JavaScript and C#.</p>
-						<ul class="actions">
-							<li><a href="https://www.linkedin.com/in/daniells2000/" class="button icon brands fa-linkedin">My Linkedin</a></li>
-						</ul>
-					</section>
+        .glitch-anim { animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+        @keyframes glitch-skew {
+            0% { transform: skew(0deg); text-shadow: -2px 0 #00f0ff, 2px 0 #ff00ea; }
+            20% { transform: skew(-20deg); text-shadow: 2px 0 #00f0ff, -2px 0 #ff00ea; }
+            40% { transform: skew(20deg); text-shadow: -2px 0 #00f0ff, 2px 0 #ff00ea; }
+            60% { transform: skew(-10deg); text-shadow: 2px 0 #00f0ff, -2px 0 #ff00ea; }
+            80% { transform: skew(10deg); text-shadow: -2px 0 #00f0ff, 2px 0 #ff00ea; }
+            100% { transform: skew(0deg); text-shadow: none; }
+        }
 
-				<!-- Two -->
-				<section id="two">
-					<h2>My Projects</h2>
-					<p>Here are some of my finished projects as well as some of the ongoing one's.</p>
-					<div class="row">
-						<!-- <article class="col-6 col-12-xsmall">
-							<a href="https://github.com/DanielLS2000/Virtual_Assistant" class="image fit thumb"><img src="images/thumbs/virtual_assistant.jpg" alt="" /></a>
-							<h3>Virtual Assistant</h3>
-							<p>A Virtual Assistant made with python, who can recognize voice commands, open sites, do searchs and take notes for you.</p>
-						</article> -->
-						<article class="col-6 col-12-xsmall">
-							<a href="https://github.com/es20231/eqp3" class="image fit thumb"><img src="images/thumbs/djavu.gif" alt="" /></a>
-							<h3>Djavú</h3>
-							<p>A college project were i had to work on a team of 5 to make a fully functional Instagram clone.</p>
-						</article>
-						<article class="col-6 col-12-xsmall">
-							<a href="https://github.com/DanielLS2000/AmazonClone" class="image fit thumb"><img src="images/thumbs/amazonclone.png" alt="" /></a>
-							<h3>Amazon Clone</h3>
-							<p>A simple clone of Amazon.com landpage and some extra features.</p>
-						</article>
-						<article class="col-6 col-12-xsmall">
-							<a href="https://github.com/DanielLS2000/MinervaChessAI" class="image fit thumb"><img src="images/thumbs/minervaai.png" alt="" /></a>
-							<h3>MinervaChessAI</h3>
-							<p>An artificial intelligence capable of playing chess, with the possibility of playing against a player, against itself and against the StockFish chess bot.</p>
-						</article>
-						<article class="col-6 col-12-xsmall">
-							<a href="https://github.com/DanielLS2000/AmazonPriceTracker" class="image fit thumb"><img src="images/thumbs/pricetracker.png" alt="" /></a>
-							<h3>Amazon Price-Tracker</h3>
-							<p>A WebScrapper App that register the prices of a product and shows you its change over time.</p>
-						</article>
-						<!-- <article class="col-6 col-12-xsmall work-item">
-							<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="" /></a>
-							<h3>Jobs WebScrapper</h3>
-							<p>A WebScrapper to search jobs for you.</p>
-						</article> -->
-						<!-- <article class="col-6 col-12-xsmall work-item">
-							<a href="images/fulls/05.jpg" class="image fit thumb"><img src="images/thumbs/05.jpg" alt="" /></a>
-							<h3>Fantasy World Generator</h3>
-							<p>Generate a fantasy world in a realistic way.</p>
-						</article> -->
-						<!-- <article class="col-6 col-12-xsmall work-item">
-							<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="" /></a>
-							<h3>AI Learns Pac-Man</h3>
-							<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-						</article> -->
-					
-					</div>
-					<ul class="actions">
-						<li><a href="https://github.com/DanielLS2000" class="button icon brands fa-github">My GitHub</a></li>
-					</ul>
-				</section>
+        @keyframes idle-breathe {
+            0%, 100% { 
+                transform: translateY(0px);
+                text-shadow: 0 0 10px rgba(0, 240, 255, 0.4), 0 0 20px rgba(0, 240, 255, 0.2); 
+            }
+            50% { 
+                transform: translateY(-4px);
+                text-shadow: 0 0 15px rgba(0, 240, 255, 0.8), 0 0 30px rgba(0, 240, 255, 0.5); 
+            }
+        }
+        .animate-idle {
+            animation: idle-breathe 4s ease-in-out infinite;
+        }
 
-				<!-- Three -->
-					<section id="three">
-						<h2>Contact me</h2>
-						<p>I'm always online so you can expect a fast response.</p>
-						<div class="row">
-							<div class="col-8 col-12-small">
-								<form method="post" action="mailto:daniellimas2000@gmail.com">
-									<div class="row gtr-uniform gtr-50">
-										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
-									</div>
-								</form>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</div>
-							<div class="col-4 col-12-small">
-								<ul class="labeled-icons">
-									<li>
-										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-										3830 Recanto das Palmeiras<br />
-										Teresina, Piaui 64.045-795<br />
-										Brazil
-									</li>
-									<li>
-										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-										+55 86 9 9556-1991
-									</li>
-									<li>
-										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-										<a href="mailto:daniellimas2000@gmail.com">daniellimas2000@gmail.com</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</section>
-			</div>
+        .carousel-item { cursor: pointer; will-change: transform, opacity; }
+        .carousel-item:hover {
+            border-color: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+        }
+    </style>
+</head>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://github.com/DanielLS2000" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="https://www.linkedin.com/in/daniells2000/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-						<li><a href="mailto:daniellimas2000@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-				</div>
-			</footer>
+<body class="font-body-md antialiased min-h-screen flex flex-col">
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    <nav class="fixed top-0 w-full flex justify-between items-center px-4 md:px-8 h-16 bg-[#0A0C10]/80 backdrop-blur-md border-b border-[#21262D] shadow-[0_0_20px_rgba(0,240,255,0.1)] z-50">
+        <div class="flex items-center gap-3 w-1/4">
+            <div class="bg-primary-container text-[#0A0C10] font-bold px-2 py-1 rounded text-sm tracking-wider">DEV</div>
+            <a href="https://www.linkedin.com/in/daniells2000/" target="_blank" class="text-xl font-bold text-[#00F0FF] tracking-widest font-mono hidden sm:block hover:text-white transition-colors">DANIELLIMA</a>
+        </div>
+        
+        <div class="hidden md:flex gap-8 w-1/2 justify-center">
+            <a class="font-h2 tracking-tighter uppercase font-medium text-sm text-gray-400 hover:text-[#00F0FF] transition-all" href="#about" data-i18n="nav_about">SOBRE</a>
+            <a class="font-h2 tracking-tighter uppercase font-medium text-sm text-gray-400 hover:text-[#00F0FF] transition-all" href="#projects" data-i18n="nav_projects">PROJETOS</a>
+            <a class="font-h2 tracking-tighter uppercase font-medium text-sm text-gray-400 hover:text-[#00F0FF] transition-all" href="#contact" data-i18n="nav_contact">CONTATO</a>
+        </div>
 
-	</body>
+        <div class="flex items-center justify-end gap-4 w-full md:w-1/4">
+            
+            <a id="resume-btn" href="./curriculos/curriculo_pt.pdf" target="_blank" class="font-h2 tracking-tighter uppercase font-medium text-xs md:text-sm text-[#00F0FF] px-4 py-2 border border-[#00F0FF] rounded btn-neon-hover transition-all" data-i18n="btn_resume">
+                CURRÍCULO
+            </a>
+
+            <div class="hidden sm:flex items-center gap-3 border-r border-[#21262D] pr-4">
+                <a href="https://github.com/DanielLS2000" target="_blank" class="text-gray-400 hover:text-[#00F0FF] transition-colors">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/daniells2000/" target="_blank" class="text-gray-400 hover:text-[#00F0FF] transition-colors">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button id="btn-pt" onclick="setLanguage('pt')" class="hover:scale-110 transition-all opacity-100" title="Português">
+                    <svg class="w-7 h-5 rounded-[2px]" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 55.2 38.4" style="enable-background:new 0 0 55.2 38.4" xml:space="preserve"><style type="text/css">.br-st0{fill:#009B3A;} .br-st1{fill:#FEDF00;} .br-st2{fill:#002776;} .br-st3{fill:#FFFFFF;} .br-st4{fill-rule:evenodd;clip-rule:evenodd;fill:#009B3A;}</style><g><path class="br-st0" d="M3.03,0h49.13c1.67,0,3.03,1.36,3.03,3.03v32.33c0,1.67-1.36,3.03-3.03,3.03H3.03C1.36,38.4,0,37.04,0,35.37 V3.03C0,1.36,1.36,0,3.03,0L3.03,0z"/><polygon class="br-st1" points="4.24,19.2 27.6,34.11 50.96,19.2 27.6,4.29 4.24,19.2"/><path class="br-st2" d="M27.6,9.35c5.44,0,9.85,4.41,9.85,9.85c0,5.44-4.41,9.85-9.85,9.85c-5.44,0-9.85-4.41-9.85-9.85 C17.75,13.76,22.16,9.35,27.6,9.35L27.6,9.35z"/><path class="br-st3" d="M18.59,15.22c1.1-0.16,2.23-0.24,3.38-0.24c5.86,0,11.22,2.11,15.38,5.6c-0.07,0.54-0.19,1.06-0.35,1.56 c-3.98-3.58-9.25-5.76-15.03-5.76c-1.33,0-2.64,0.12-3.91,0.34C18.2,16.2,18.38,15.7,18.59,15.22L18.59,15.22z"/><path class="br-st4" d="M19.18,16.15c0.14-0.02,0.23-0.16,0.21-0.32c-0.02-0.16-0.15-0.28-0.28-0.26c-0.13,0.02-0.23,0.16-0.21,0.32 C18.92,16.05,19.04,16.16,19.18,16.15L19.18,16.15z M19.2,16.32c0.23-0.03,0.4-0.26,0.36-0.52c-0.03-0.26-0.24-0.44-0.48-0.41 c-0.23,0.03-0.39,0.26-0.36,0.52C18.76,16.16,18.97,16.35,19.2,16.32L19.2,16.32z"/><path class="br-st4" d="M20.1,15.7l0.36-0.02c0.07-0.01,0.12-0.06,0.11-0.13c0-0.07-0.06-0.12-0.13-0.11l-0.36,0.03L20.1,15.7 L20.1,15.7z M19.96,16.24l0.17-0.01l-0.02-0.35l0.37-0.03c0.16-0.01,0.29-0.15,0.27-0.31c-0.01-0.16-0.15-0.28-0.31-0.27 l-0.53,0.04L19.96,16.24L19.96,16.24z"/><path class="br-st0" d="M20.76,16.18c-0.01-0.13-0.03-0.43-0.23-0.41l-0.26,0.02c0.29-0.02,0.31,0.27,0.33,0.41L20.76,16.18 L20.76,16.18z"/><path class="br-st4" d="M21.32,15.98l0.25,0c0.14,0,0.25-0.12,0.25-0.26v-0.08c0-0.14-0.12-0.25-0.26-0.25l-0.26,0.01L21.32,15.98 L21.32,15.98z M21.15,16.16l0.44-0.01c0.22-0.01,0.4-0.19,0.4-0.41l0-0.13c0-0.22-0.19-0.4-0.41-0.4l-0.44,0.01L21.15,16.16 L21.15,16.16z"/><polygon class="br-st0" points="22.34,16.15 23.19,16.18 23.19,16.01 22.51,15.98 22.52,15.74 23.05,15.76 23.06,15.6 22.52,15.58 22.53,15.39 23.17,15.42 23.18,15.24 22.38,15.21 22.34,16.15"/><polygon class="br-st0" points="23.53,16.2 23.69,16.22 23.75,15.57 23.88,16.23 24.03,16.25 24.27,15.62 24.21,16.26 24.37,16.27 24.46,15.34 24.22,15.32 23.98,15.94 23.85,15.29 23.62,15.27 23.53,16.2"/><polygon class="br-st0" points="25.48,16.42 26.17,16.54 26.2,16.38 25.66,16.29 25.7,16.08 26.13,16.15 26.16,16 25.73,15.92 25.75,15.77 26.27,15.86 26.3,15.7 25.62,15.59 25.48,16.42"/><path class="br-st4" d="M27.56,16.31l0.35,0.09c0.06,0.01,0.13-0.02,0.15-0.09c0.01-0.06-0.02-0.13-0.09-0.15l-0.35-0.09L27.56,16.31 L27.56,16.31z M27.26,16.77l0.17,0.04l0.09-0.34l0.36,0.09c0.16,0.04,0.32-0.05,0.36-0.21c0.04-0.16-0.05-0.32-0.21-0.36 l-0.52-0.14L27.26,16.77L27.26,16.77z"/><path class="br-st4" d="M28.73,16.63l0.34,0.11c0.06,0.02,0.13-0.01,0.15-0.08c0.02-0.06-0.01-0.13-0.08-0.15L28.8,16.4L28.73,16.63 L28.73,16.63z M28.41,17.08l0.17,0.05l0.11-0.33l0.36,0.11c0.15,0.05,0.32-0.04,0.37-0.19c0.05-0.15-0.04-0.32-0.19-0.37 l-0.51-0.16L28.41,17.08L28.41,17.08z"/><path class="br-st0" d="M29.17,17.32c0.04-0.13,0.13-0.41-0.06-0.47l-0.24-0.08c0.28,0.09,0.19,0.37,0.15,0.5L29.17,17.32L29.17,17.32 z"/><path class="br-st4" d="M30,17.43c0.13,0.05,0.28-0.04,0.33-0.19c0.06-0.15,0-0.32-0.13-0.36c-0.13-0.05-0.28,0.04-0.33,0.19 C29.81,17.22,29.87,17.38,30,17.43L30,17.43z M29.94,17.59c0.22,0.08,0.47-0.05,0.56-0.29c0.09-0.24-0.01-0.51-0.23-0.59 c-0.22-0.08-0.47,0.05-0.56,0.29C29.62,17.25,29.72,17.51,29.94,17.59L29.94,17.59z"/><path class="br-st4" d="M31.11,17.88c0.13,0.05,0.28-0.02,0.35-0.17l0,0l0.16,0.07c-0.1,0.24-0.36,0.35-0.57,0.26 c-0.22-0.09-0.31-0.36-0.2-0.6c0.1-0.24,0.36-0.36,0.57-0.26c0.17,0.07,0.26,0.25,0.24,0.44l-0.17-0.08 c-0.01-0.09-0.06-0.17-0.14-0.2c-0.12-0.06-0.28,0.02-0.34,0.17C30.94,17.66,30.98,17.82,31.11,17.88L31.11,17.88z"/><polygon class="br-st0" points="31.29,17.64 31.62,17.78 31.56,17.9 31.24,17.76 31.29,17.64"/><polygon class="br-st0" points="31.49,17.72 31.62,17.78 31.43,18.21 31.3,18.15 31.49,17.72"/><path class="br-st4" d="M32.13,17.96l0.32,0.16c0.06,0.03,0.13,0.01,0.16-0.05c0.03-0.06,0.01-0.13-0.06-0.16l-0.32-0.16L32.13,17.96 L32.13,17.96z M31.74,18.35l0.16,0.08l0.15-0.31l0.33,0.17c0.15,0.07,0.32,0.01,0.4-0.13c0.07-0.15,0.01-0.32-0.13-0.4l-0.48-0.24 L31.74,18.35L31.74,18.35z"/><path class="br-st0" d="M32.46,18.71c0.06-0.12,0.19-0.38,0.01-0.47l-0.23-0.11c0.26,0.13,0.13,0.4,0.07,0.51L32.46,18.71L32.46,18.71 z"/><polygon class="br-st0" points="32.81,18.89 33.54,19.31 33.63,19.16 33.03,18.82 33.15,18.61 33.62,18.87 33.69,18.73 33.23,18.47 33.32,18.31 33.88,18.62 33.97,18.47 33.27,18.08 32.81,18.89"/><path class="br-st0" d="M34.18,19.35c-0.05,0.08,0,0.17,0.11,0.24c0.11,0.07,0.19,0.07,0.22,0.02c0.1-0.16-0.49-0.4-0.31-0.68 c0.16-0.24,0.43-0.05,0.53,0.01c0.1,0.06,0.26,0.23,0.14,0.42l-0.17-0.11c0.05-0.09-0.01-0.17-0.1-0.22 c-0.09-0.05-0.16-0.08-0.21,0c-0.09,0.13,0.49,0.38,0.32,0.66c-0.13,0.21-0.36,0.12-0.52,0.02c-0.13-0.08-0.32-0.28-0.2-0.48 L34.18,19.35L34.18,19.35z"/><path class="br-st0" d="M35.18,20.02c-0.05,0.08-0.01,0.17,0.1,0.24c0.11,0.08,0.19,0.08,0.22,0.03c0.11-0.16-0.47-0.42-0.27-0.69 c0.17-0.23,0.43-0.03,0.53,0.04c0.1,0.07,0.25,0.25,0.12,0.43l-0.17-0.12c0.06-0.08,0-0.16-0.08-0.23 c-0.08-0.06-0.15-0.09-0.21-0.01c-0.1,0.12,0.47,0.4,0.28,0.67c-0.14,0.2-0.37,0.1-0.51-0.01c-0.13-0.09-0.31-0.3-0.17-0.49 L35.18,20.02L35.18,20.02z"/><path class="br-st4" d="M36.24,20.96c0.11,0.08,0.28,0.05,0.38-0.08c0.1-0.13,0.1-0.3-0.01-0.38c-0.1-0.09-0.28-0.05-0.37,0.08 C36.13,20.7,36.13,20.88,36.24,20.96L36.24,20.96z M36.13,21.1c0.18,0.15,0.46,0.1,0.62-0.1c0.16-0.2,0.14-0.48-0.04-0.63 c-0.18-0.15-0.46-0.1-0.62,0.1C35.93,20.67,35.95,20.95,36.13,21.1L36.13,21.1z"/><polygon class="br-st3" points="19.56,17.01 19.43,17.41 19.63,17.48 19.56,17.01"/><polygon class="br-st3" points="19.56,17.01 19.69,17.41 19.49,17.48 19.56,17.01"/><polygon class="br-st3" points="19.96,17.3 19.54,17.3 19.54,17.51 19.96,17.3"/><polygon class="br-st3" points="19.96,17.3 19.62,17.55 19.49,17.38 19.96,17.3"/><polygon class="br-st3" points="19.16,17.3 19.5,17.55 19.62,17.38 19.16,17.3"/><polygon class="br-st3" points="19.16,17.3 19.58,17.3 19.58,17.51 19.16,17.3"/><polygon class="br-st3" points="19.81,17.77 19.68,17.37 19.48,17.44 19.81,17.77"/><polygon class="br-st3" points="19.81,17.77 19.47,17.53 19.59,17.35 19.81,17.77"/><polygon class="br-st3" points="19.31,17.77 19.65,17.53 19.53,17.35 19.31,17.77"/><polygon class="br-st3" points="19.31,17.77 19.44,17.37 19.64,17.44 19.31,17.77"/><polygon class="br-st3" points="20.43,21.15 20.3,21.55 20.5,21.62 20.43,21.15"/><polygon class="br-st3" points="20.43,21.15 20.56,21.55 20.36,21.62 20.43,21.15"/><polygon class="br-st3" points="20.83,21.44 20.41,21.44 20.41,21.65 20.83,21.44"/><polygon class="br-st3" points="20.83,21.44 20.49,21.69 20.37,21.52 20.83,21.44"/><polygon class="br-st3" points="20.03,21.44 20.37,21.69 20.5,21.52 20.03,21.44"/><polygon class="br-st3" points="20.03,21.44 20.45,21.44 20.45,21.65 20.03,21.44"/><polygon class="br-st3" points="20.68,21.91 20.55,21.51 20.35,21.58 20.68,21.91"/><polygon class="br-st3" points="20.68,21.91 20.34,21.67 20.46,21.49 20.68,21.91"/><polygon class="br-st3" points="20.18,21.91 20.52,21.67 20.4,21.49 20.18,21.91"/><polygon class="br-st3" points="20.18,21.91 20.31,21.51 20.51,21.58 20.18,21.91"/><polygon class="br-st3" points="19.22,22.11 19.12,22.44 19.28,22.49 19.22,22.11"/><polygon class="br-st3" points="19.22,22.11 19.33,22.44 19.17,22.49 19.22,22.11"/><polygon class="br-st3" points="19.56,22.35 19.21,22.35 19.21,22.52 19.56,22.35"/><polygon class="br-st3" points="19.56,22.35 19.27,22.55 19.17,22.41 19.56,22.35"/><polygon class="br-st3" points="18.89,22.35 19.18,22.55 19.28,22.41 18.89,22.35"/><polygon class="br-st3" points="18.89,22.35 19.24,22.35 19.24,22.52 18.89,22.35"/><polygon class="br-st3" points="19.43,22.74 19.32,22.4 19.15,22.46 19.43,22.74"/><polygon class="br-st3" points="19.43,22.74 19.15,22.53 19.25,22.39 19.43,22.74"/><polygon class="br-st3" points="19.02,22.74 19.3,22.53 19.2,22.39 19.02,22.74"/><polygon class="br-st3" points="19.02,22.74 19.13,22.4 19.29,22.46 19.02,22.74"/><polygon class="br-st3" points="21.4,20.77 21.33,20.96 21.43,20.99 21.4,20.77"/><polygon class="br-st3" points="21.4,20.77 21.46,20.96 21.36,20.99 21.4,20.77"/><polygon class="br-st3" points="21.59,20.91 21.39,20.91 21.39,21.01 21.59,20.91"/><polygon class="br-st3" points="21.59,20.91 21.42,21.03 21.37,20.95 21.59,20.91"/><polygon class="br-st3" points="21.2,20.91 21.37,21.03 21.43,20.95 21.2,20.91"/><polygon class="br-st3" points="21.2,20.91 21.41,20.91 21.41,21.01 21.2,20.91"/><polygon class="br-st3" points="21.51,21.13 21.45,20.94 21.36,20.97 21.51,21.13"/><polygon class="br-st3" points="21.51,21.13 21.35,21.01 21.41,20.93 21.51,21.13"/><polygon class="br-st3" points="21.28,21.13 21.44,21.01 21.38,20.93 21.28,21.13"/><polygon class="br-st3" points="21.28,21.13 21.34,20.94 21.43,20.97 21.28,21.13"/><polygon class="br-st3" points="22.48,22.2 22.37,22.53 22.54,22.59 22.48,22.2"/><polygon class="br-st3" points="22.48,22.2 22.59,22.53 22.42,22.59 22.48,22.2"/><polygon class="br-st3" points="22.82,22.44 22.46,22.44 22.46,22.62 22.82,22.44"/><polygon class="br-st3" points="22.82,22.44 22.53,22.65 22.43,22.51 22.82,22.44"/><polygon class="br-st3" points="22.15,22.44 22.43,22.65 22.53,22.51 22.15,22.44"/><polygon class="br-st3" points="22.15,22.44 22.5,22.44 22.5,22.62 22.15,22.44"/><polygon class="br-st3" points="22.69,22.84 22.58,22.5 22.41,22.55 22.69,22.84"/><polygon class="br-st3" points="22.69,22.84 22.4,22.63 22.51,22.49 22.69,22.84"/><polygon class="br-st3" points="22.28,22.84 22.56,22.63 22.46,22.49 22.28,22.84"/><polygon class="br-st3" points="22.28,22.84 22.38,22.5 22.55,22.55 22.28,22.84"/><polygon class="br-st3" points="22.19,23.25 22.1,23.52 22.23,23.56 22.19,23.25"/><polygon class="br-st3" points="22.19,23.25 22.27,23.52 22.14,23.56 22.19,23.25"/><polygon class="br-st3" points="22.45,23.44 22.17,23.44 22.17,23.58 22.45,23.44"/><polygon class="br-st3" points="22.45,23.44 22.23,23.61 22.14,23.49 22.45,23.44"/><polygon class="br-st3" points="21.92,23.44 22.15,23.61 22.23,23.49 21.92,23.44"/><polygon class="br-st3" points="21.92,23.44 22.2,23.44 22.2,23.58 21.92,23.44"/><polygon class="br-st3" points="22.35,23.76 22.26,23.49 22.13,23.53 22.35,23.76"/><polygon class="br-st3" points="22.35,23.76 22.12,23.59 22.21,23.48 22.35,23.76"/><polygon class="br-st3" points="22.02,23.76 22.25,23.59 22.16,23.48 22.02,23.76"/><polygon class="br-st3" points="22.02,23.76 22.11,23.49 22.24,23.53 22.02,23.76"/><polygon class="br-st3" points="30.66,15.72 30.53,16.12 30.73,16.19 30.66,15.72"/><polygon class="br-st3" points="30.66,15.72 30.78,16.12 30.58,16.19 30.66,15.72"/><polygon class="br-st3" points="31.06,16.02 30.63,16.02 30.63,16.23 31.06,16.02"/><polygon class="br-st3" points="31.06,16.02 30.71,16.26 30.59,16.09 31.06,16.02"/><polygon class="br-st3" points="30.25,16.02 30.6,16.26 30.72,16.09 30.25,16.02"/><polygon class="br-st3" points="30.25,16.02 30.68,16.02 30.68,16.23 30.25,16.02"/><polygon class="br-st3" points="30.9,16.49 30.77,16.09 30.57,16.15 30.9,16.49"/><polygon class="br-st3" points="30.9,16.49 30.56,16.24 30.69,16.07 30.9,16.49"/><polygon class="br-st3" points="30.41,16.49 30.75,16.24 30.62,16.07 30.41,16.49"/><polygon class="br-st3" points="30.41,16.49 30.54,16.09 30.74,16.15 30.41,16.49"/><polygon class="br-st3" points="34.5,22.24 34.37,22.64 34.57,22.7 34.5,22.24"/><polygon class="br-st3" points="34.5,22.24 34.63,22.64 34.43,22.7 34.5,22.24"/><polygon class="br-st3" points="34.9,22.53 34.48,22.53 34.48,22.74 34.9,22.53"/><polygon class="br-st3" points="34.9,22.53 34.56,22.77 34.44,22.61 34.9,22.53"/><polygon class="br-st3" points="34.1,22.53 34.44,22.77 34.56,22.61 34.1,22.53"/><polygon class="br-st3" points="34.1,22.53 34.52,22.53 34.52,22.74 34.1,22.53"/><polygon class="br-st3" points="34.75,23 34.62,22.6 34.42,22.66 34.75,23"/><polygon class="br-st3" points="34.75,23 34.41,22.75 34.53,22.58 34.75,23"/><polygon class="br-st3" points="34.25,23 34.59,22.75 34.47,22.58 34.25,23"/><polygon class="br-st3" points="34.25,23 34.38,22.6 34.58,22.66 34.25,23"/><polygon class="br-st3" points="35.87,22.47 35.78,22.74 35.91,22.78 35.87,22.47"/><polygon class="br-st3" points="35.87,22.47 35.95,22.74 35.82,22.78 35.87,22.47"/><polygon class="br-st3" points="36.13,22.66 35.85,22.66 35.85,22.8 36.13,22.66"/><polygon class="br-st3" points="36.13,22.66 35.91,22.83 35.82,22.72 36.13,22.66"/><polygon class="br-st3" points="35.6,22.66 35.83,22.83 35.91,22.72 35.6,22.66"/><polygon class="br-st3" points="35.6,22.66 35.88,22.66 35.88,22.8 35.6,22.66"/><polygon class="br-st3" points="36.03,22.98 35.95,22.71 35.81,22.75 36.03,22.98"/><polygon class="br-st3" points="36.03,22.98 35.81,22.81 35.89,22.7 36.03,22.98"/><polygon class="br-st3" points="35.7,22.98 35.93,22.81 35.85,22.7 35.7,22.98"/><polygon class="br-st3" points="35.7,22.98 35.79,22.71 35.92,22.75 35.7,22.98"/><polygon class="br-st3" points="34.9,23.18 34.79,23.51 34.96,23.57 34.9,23.18"/><polygon class="br-st3" points="34.9,23.18 35.01,23.51 34.84,23.57 34.9,23.18"/><polygon class="br-st3" points="35.24,23.42 34.88,23.42 34.88,23.59 35.24,23.42"/><polygon class="br-st3" points="35.24,23.42 34.95,23.63 34.85,23.48 35.24,23.42"/><polygon class="br-st3" points="34.57,23.42 34.85,23.63 34.96,23.48 34.57,23.42"/><polygon class="br-st3" points="34.57,23.42 34.92,23.42 34.92,23.59 34.57,23.42"/><polygon class="br-st3" points="35.11,23.81 35,23.48 34.83,23.53 35.11,23.81"/><polygon class="br-st3" points="35.11,23.81 34.83,23.61 34.93,23.46 35.11,23.81"/><polygon class="br-st3" points="34.7,23.81 34.98,23.61 34.88,23.46 34.7,23.81"/><polygon class="br-st3" points="34.7,23.81 34.81,23.48 34.97,23.53 34.7,23.81"/><polygon class="br-st3" points="32.53,25.24 32.42,25.57 32.59,25.63 32.53,25.24"/><polygon class="br-st3" points="32.53,25.24 32.64,25.57 32.47,25.63 32.53,25.24"/><polygon class="br-st3" points="32.87,25.48 32.51,25.48 32.51,25.66 32.87,25.48"/><polygon class="br-st3" points="32.87,25.48 32.58,25.69 32.48,25.55 32.87,25.48"/><polygon class="br-st3" points="32.2,25.48 32.48,25.69 32.58,25.55 32.2,25.48"/><polygon class="br-st3" points="32.2,25.48 32.55,25.48 32.55,25.66 32.2,25.48"/><polygon class="br-st3" points="32.74,25.88 32.63,25.54 32.46,25.6 32.74,25.88"/><polygon class="br-st3" points="32.74,25.88 32.45,25.67 32.56,25.53 32.74,25.88"/><polygon class="br-st3" points="32.33,25.88 32.61,25.67 32.51,25.53 32.33,25.88"/><polygon class="br-st3" points="32.33,25.88 32.43,25.54 32.6,25.6 32.33,25.88"/><polygon class="br-st3" points="32.52,26.3 32.43,26.57 32.56,26.61 32.52,26.3"/><polygon class="br-st3" points="32.52,26.3 32.6,26.57 32.47,26.61 32.52,26.3"/><polygon class="br-st3" points="32.78,26.5 32.5,26.5 32.5,26.64 32.78,26.5"/><polygon class="br-st3" points="32.78,26.5 32.56,26.66 32.47,26.55 32.78,26.5"/><polygon class="br-st3" points="32.25,26.5 32.48,26.66 32.56,26.55 32.25,26.5"/><polygon class="br-st3" points="32.25,26.5 32.53,26.5 32.53,26.64 32.25,26.5"/><polygon class="br-st3" points="32.68,26.81 32.6,26.54 32.46,26.59 32.68,26.81"/><polygon class="br-st3" points="32.68,26.81 32.46,26.65 32.54,26.53 32.68,26.81"/><polygon class="br-st3" points="32.35,26.81 32.58,26.65 32.5,26.53 32.35,26.81"/><polygon class="br-st3" points="32.35,26.81 32.44,26.54 32.57,26.59 32.35,26.81"/><polygon class="br-st3" points="33.51,24.53 33.42,24.8 33.56,24.85 33.51,24.53"/><polygon class="br-st3" points="33.51,24.53 33.6,24.8 33.46,24.85 33.51,24.53"/><polygon class="br-st3" points="33.78,24.73 33.49,24.73 33.49,24.87 33.78,24.73"/><polygon class="br-st3" points="33.78,24.73 33.55,24.89 33.47,24.78 33.78,24.73"/><polygon class="br-st3" points="33.24,24.73 33.47,24.89 33.55,24.78 33.24,24.73"/><polygon class="br-st3" points="33.24,24.73 33.52,24.73 33.52,24.87 33.24,24.73"/><polygon class="br-st3" points="33.67,25.04 33.59,24.77 33.45,24.82 33.67,25.04"/><polygon class="br-st3" points="33.67,25.04 33.45,24.88 33.53,24.76 33.67,25.04"/><polygon class="br-st3" points="33.34,25.04 33.57,24.88 33.49,24.76 33.34,25.04"/><polygon class="br-st3" points="33.34,25.04 33.43,24.77 33.56,24.82 33.34,25.04"/><polygon class="br-st3" points="34.3,23.97 34.19,24.3 34.36,24.36 34.3,23.97"/><polygon class="br-st3" points="34.3,23.97 34.41,24.3 34.24,24.36 34.3,23.97"/><polygon class="br-st3" points="34.63,24.21 34.28,24.21 34.28,24.39 34.63,24.21"/><polygon class="br-st3" points="34.63,24.21 34.35,24.42 34.25,24.28 34.63,24.21"/><polygon class="br-st3" points="33.97,24.21 34.25,24.42 34.35,24.28 33.97,24.21"/><polygon class="br-st3" points="33.97,24.21 34.32,24.21 34.32,24.39 33.97,24.21"/><polygon class="br-st3" points="34.51,24.6 34.4,24.27 34.23,24.32 34.51,24.6"/><polygon class="br-st3" points="34.51,24.6 34.22,24.4 34.33,24.25 34.51,24.6"/><polygon class="br-st3" points="34.09,24.6 34.38,24.4 34.27,24.25 34.09,24.6"/><polygon class="br-st3" points="34.09,24.6 34.2,24.27 34.37,24.32 34.09,24.6"/><polygon class="br-st3" points="32.49,24.34 32.4,24.61 32.54,24.66 32.49,24.34"/><polygon class="br-st3" points="32.49,24.34 32.58,24.61 32.44,24.66 32.49,24.34"/><polygon class="br-st3" points="32.76,24.54 32.48,24.54 32.48,24.68 32.76,24.54"/><polygon class="br-st3" points="32.76,24.54 32.53,24.71 32.45,24.59 32.76,24.54"/><polygon class="br-st3" points="32.22,24.54 32.45,24.71 32.53,24.59 32.22,24.54"/><polygon class="br-st3" points="32.22,24.54 32.51,24.54 32.51,24.68 32.22,24.54"/><polygon class="br-st3" points="32.66,24.85 32.57,24.59 32.44,24.63 32.66,24.85"/><polygon class="br-st3" points="32.66,24.85 32.43,24.69 32.51,24.58 32.66,24.85"/><polygon class="br-st3" points="32.33,24.85 32.55,24.69 32.47,24.58 32.33,24.85"/><polygon class="br-st3" points="32.33,24.85 32.41,24.59 32.55,24.63 32.33,24.85"/><polygon class="br-st3" points="23.85,19.25 23.74,19.58 23.91,19.64 23.85,19.25"/><polygon class="br-st3" points="23.85,19.25 23.96,19.58 23.79,19.64 23.85,19.25"/><polygon class="br-st3" points="24.18,19.49 23.83,19.49 23.83,19.67 24.18,19.49"/><polygon class="br-st3" points="24.18,19.49 23.9,19.7 23.79,19.56 24.18,19.49"/><polygon class="br-st3" points="23.51,19.49 23.8,19.7 23.9,19.56 23.51,19.49"/><polygon class="br-st3" points="23.51,19.49 23.87,19.49 23.87,19.67 23.51,19.49"/><polygon class="br-st3" points="24.05,19.89 23.95,19.55 23.78,19.61 24.05,19.89"/><polygon class="br-st3" points="24.05,19.89 23.77,19.68 23.87,19.54 24.05,19.89"/><polygon class="br-st3" points="23.64,19.89 23.93,19.68 23.82,19.54 23.64,19.89"/><polygon class="br-st3" points="23.64,19.89 23.75,19.55 23.92,19.61 23.64,19.89"/><polygon class="br-st3" points="30.28,18.42 30.19,18.69 30.33,18.73 30.28,18.42"/><polygon class="br-st3" points="30.28,18.42 30.37,18.69 30.23,18.73 30.28,18.42"/><polygon class="br-st3" points="30.55,18.62 30.27,18.62 30.27,18.76 30.55,18.62"/><polygon class="br-st3" points="30.55,18.62 30.32,18.78 30.24,18.67 30.55,18.62"/><polygon class="br-st3" points="30.01,18.62 30.24,18.78 30.32,18.67 30.01,18.62"/><polygon class="br-st3" points="30.01,18.62 30.29,18.62 30.29,18.76 30.01,18.62"/><polygon class="br-st3" points="30.44,18.93 30.36,18.67 30.23,18.71 30.44,18.93"/><polygon class="br-st3" points="30.44,18.93 30.22,18.77 30.3,18.65 30.44,18.93"/><polygon class="br-st3" points="30.12,18.93 30.34,18.77 30.26,18.65 30.12,18.93"/><polygon class="br-st3" points="30.12,18.93 30.2,18.67 30.34,18.71 30.12,18.93"/><polygon class="br-st3" points="27.6,23.2 27.47,23.6 27.67,23.67 27.6,23.2"/><polygon class="br-st3" points="27.6,23.2 27.73,23.6 27.53,23.67 27.6,23.2"/><polygon class="br-st3" points="28,23.49 27.58,23.49 27.58,23.7 28,23.49"/><polygon class="br-st3" points="28,23.49 27.66,23.74 27.54,23.57 28,23.49"/><polygon class="br-st3" points="27.2,23.49 27.54,23.74 27.66,23.57 27.2,23.49"/><polygon class="br-st3" points="27.2,23.49 27.62,23.49 27.62,23.7 27.2,23.49"/><polygon class="br-st3" points="27.85,23.96 27.72,23.56 27.52,23.63 27.85,23.96"/><polygon class="br-st3" points="27.85,23.96 27.51,23.72 27.63,23.54 27.85,23.96"/><polygon class="br-st3" points="27.35,23.96 27.69,23.72 27.57,23.54 27.35,23.96"/><polygon class="br-st3" points="27.35,23.96 27.48,23.56 27.68,23.63 27.35,23.96"/><polygon class="br-st3" points="28.74,21.31 28.63,21.65 28.8,21.7 28.74,21.31"/><polygon class="br-st3" points="28.74,21.31 28.85,21.65 28.68,21.7 28.74,21.31"/><polygon class="br-st3" points="29.07,21.56 28.72,21.56 28.72,21.73 29.07,21.56"/><polygon class="br-st3" points="29.07,21.56 28.79,21.76 28.68,21.62 29.07,21.56"/><polygon class="br-st3" points="28.41,21.56 28.69,21.76 28.79,21.62 28.41,21.56"/><polygon class="br-st3" points="28.41,21.56 28.76,21.56 28.76,21.73 28.41,21.56"/><polygon class="br-st3" points="28.95,21.95 28.84,21.62 28.67,21.67 28.95,21.95"/><polygon class="br-st3" points="28.95,21.95 28.66,21.74 28.76,21.6 28.95,21.95"/><polygon class="br-st3" points="28.53,21.95 28.82,21.74 28.71,21.6 28.53,21.95"/><polygon class="br-st3" points="28.53,21.95 28.64,21.62 28.81,21.67 28.53,21.95"/><polygon class="br-st3" points="27.6,20.43 27.49,20.76 27.66,20.82 27.6,20.43"/><polygon class="br-st3" points="27.6,20.43 27.71,20.76 27.54,20.82 27.6,20.43"/><polygon class="br-st3" points="27.93,20.67 27.58,20.67 27.58,20.85 27.93,20.67"/><polygon class="br-st3" points="27.93,20.67 27.65,20.88 27.55,20.74 27.93,20.67"/><polygon class="br-st3" points="27.27,20.67 27.55,20.88 27.65,20.74 27.27,20.67"/><polygon class="br-st3" points="27.27,20.67 27.62,20.67 27.62,20.85 27.27,20.67"/><polygon class="br-st3" points="27.81,21.07 27.7,20.73 27.53,20.79 27.81,21.07"/><polygon class="br-st3" points="27.81,21.07 27.52,20.86 27.63,20.72 27.81,21.07"/><polygon class="br-st3" points="27.39,21.07 27.68,20.86 27.57,20.72 27.39,21.07"/><polygon class="br-st3" points="27.39,21.07 27.5,20.73 27.67,20.79 27.39,21.07"/><polygon class="br-st3" points="26.61,21.38 26.52,21.65 26.66,21.7 26.61,21.38"/><polygon class="br-st3" points="26.61,21.38 26.7,21.65 26.56,21.7 26.61,21.38"/><polygon class="br-st3" points="26.88,21.58 26.59,21.58 26.59,21.72 26.88,21.58"/><polygon class="br-st3" points="26.88,21.58 26.65,21.74 26.56,21.63 26.88,21.58"/><polygon class="br-st3" points="26.34,21.58 26.57,21.74 26.65,21.63 26.34,21.58"/><polygon class="br-st3" points="26.34,21.58 26.62,21.58 26.62,21.72 26.34,21.58"/><polygon class="br-st3" points="26.77,21.89 26.69,21.63 26.55,21.67 26.77,21.89"/><polygon class="br-st3" points="26.77,21.89 26.55,21.73 26.63,21.61 26.77,21.89"/><polygon class="br-st3" points="26.44,21.89 26.67,21.73 26.59,21.61 26.44,21.89"/><polygon class="br-st3" points="26.44,21.89 26.53,21.63 26.66,21.67 26.44,21.89"/><polygon class="br-st3" points="27.1,22.15 27.04,22.34 27.14,22.37 27.1,22.15"/><polygon class="br-st3" points="27.1,22.15 27.17,22.34 27.07,22.37 27.1,22.15"/><polygon class="br-st3" points="27.29,22.29 27.09,22.29 27.09,22.39 27.29,22.29"/><polygon class="br-st3" points="27.29,22.29 27.13,22.4 27.07,22.32 27.29,22.29"/><polygon class="br-st3" points="26.91,22.29 27.08,22.4 27.13,22.32 26.91,22.29"/><polygon class="br-st3" points="26.91,22.29 27.11,22.29 27.11,22.39 26.91,22.29"/><polygon class="br-st3" points="27.22,22.51 27.16,22.32 27.06,22.35 27.22,22.51"/><polygon class="br-st3" points="27.22,22.51 27.06,22.39 27.12,22.31 27.22,22.51"/><polygon class="br-st3" points="26.99,22.51 27.15,22.39 27.09,22.31 26.99,22.51"/><polygon class="br-st3" points="26.99,22.51 27.05,22.32 27.14,22.35 26.99,22.51"/><polygon class="br-st3" points="30.55,25.48 30.44,25.82 30.61,25.87 30.55,25.48"/><polygon class="br-st3" points="30.55,25.48 30.66,25.82 30.49,25.87 30.55,25.48"/><polygon class="br-st3" points="30.88,25.72 30.53,25.72 30.53,25.9 30.88,25.72"/><polygon class="br-st3" points="30.88,25.72 30.6,25.93 30.49,25.79 30.88,25.72"/><polygon class="br-st3" points="30.21,25.72 30.5,25.93 30.6,25.79 30.21,25.72"/><polygon class="br-st3" points="30.21,25.72 30.57,25.72 30.57,25.9 30.21,25.72"/><polygon class="br-st3" points="30.75,26.12 30.65,25.78 30.48,25.84 30.75,26.12"/><polygon class="br-st3" points="30.75,26.12 30.47,25.91 30.57,25.77 30.75,26.12"/><polygon class="br-st3" points="30.34,26.12 30.63,25.91 30.52,25.77 30.34,26.12"/><polygon class="br-st3" points="30.34,26.12 30.45,25.78 30.62,25.84 30.34,26.12"/><polygon class="br-st3" points="31.39,24.68 31.3,24.95 31.44,24.99 31.39,24.68"/><polygon class="br-st3" points="31.39,24.68 31.48,24.95 31.35,24.99 31.39,24.68"/><polygon class="br-st3" points="31.66,24.87 31.38,24.87 31.38,25.02 31.66,24.87"/><polygon class="br-st3" points="31.66,24.87 31.43,25.04 31.35,24.93 31.66,24.87"/><polygon class="br-st3" points="31.12,24.87 31.35,25.04 31.44,24.93 31.12,24.87"/><polygon class="br-st3" points="31.12,24.87 31.41,24.87 31.41,25.02 31.12,24.87"/><polygon class="br-st3" points="31.56,25.19 31.47,24.92 31.34,24.97 31.56,25.19"/><polygon class="br-st3" points="31.56,25.19 31.33,25.03 31.41,24.91 31.56,25.19"/><polygon class="br-st3" points="31.23,25.19 31.45,25.03 31.37,24.91 31.23,25.19"/><polygon class="br-st3" points="31.23,25.19 31.31,24.92 31.45,24.97 31.23,25.19"/><polygon class="br-st3" points="29.77,24.44 29.68,24.71 29.82,24.75 29.77,24.44"/><polygon class="br-st3" points="29.77,24.44 29.86,24.71 29.72,24.75 29.77,24.44"/><polygon class="br-st3" points="30.04,24.64 29.76,24.64 29.76,24.77 30.04,24.64"/><polygon class="br-st3" points="30.04,24.64 29.81,24.8 29.73,24.68 30.04,24.64"/><polygon class="br-st3" points="29.5,24.64 29.73,24.8 29.81,24.68 29.5,24.64"/><polygon class="br-st3" points="29.5,24.64 29.78,24.64 29.78,24.77 29.5,24.64"/><polygon class="br-st3" points="29.93,24.95 29.85,24.68 29.71,24.73 29.93,24.95"/><polygon class="br-st3" points="29.93,24.95 29.71,24.78 29.79,24.67 29.93,24.95"/><polygon class="br-st3" points="29.61,24.95 29.83,24.78 29.75,24.67 29.61,24.95"/><polygon class="br-st3" points="29.61,24.95 29.69,24.68 29.82,24.73 29.61,24.95"/><polygon class="br-st3" points="23.65,24 23.52,24.41 23.72,24.47 23.65,24"/><polygon class="br-st3" points="23.65,24 23.78,24.41 23.58,24.47 23.65,24"/><polygon class="br-st3" points="24.05,24.3 23.63,24.3 23.63,24.51 24.05,24.3"/><polygon class="br-st3" points="24.05,24.3 23.71,24.54 23.58,24.37 24.05,24.3"/><polygon class="br-st3" points="23.25,24.3 23.59,24.54 23.71,24.37 23.25,24.3"/><polygon class="br-st3" points="23.25,24.3 23.67,24.3 23.67,24.51 23.25,24.3"/><polygon class="br-st3" points="23.9,24.77 23.76,24.36 23.56,24.43 23.9,24.77"/><polygon class="br-st3" points="23.9,24.77 23.55,24.52 23.68,24.35 23.9,24.77"/><polygon class="br-st3" points="23.4,24.77 23.74,24.52 23.62,24.35 23.4,24.77"/><polygon class="br-st3" points="23.4,24.77 23.53,24.36 23.73,24.43 23.4,24.77"/><polygon class="br-st3" points="27.6,26.76 27.56,26.9 27.62,26.92 27.6,26.76"/><polygon class="br-st3" points="27.6,26.76 27.64,26.9 27.58,26.92 27.6,26.76"/><polygon class="br-st3" points="27.73,26.86 27.59,26.86 27.59,26.93 27.73,26.86"/><polygon class="br-st3" points="27.73,26.86 27.62,26.94 27.58,26.89 27.73,26.86"/><polygon class="br-st3" points="27.47,26.86 27.58,26.94 27.62,26.89 27.47,26.86"/><polygon class="br-st3" points="27.47,26.86 27.61,26.86 27.61,26.93 27.47,26.86"/><polygon class="br-st3" points="27.68,27.02 27.64,26.89 27.57,26.91 27.68,27.02"/><polygon class="br-st3" points="27.68,27.02 27.57,26.94 27.61,26.88 27.68,27.02"/><polygon class="br-st3" points="27.52,27.02 27.63,26.94 27.59,26.88 27.52,27.02"/><polygon class="br-st3" points="27.52,27.02 27.56,26.89 27.63,26.91 27.52,27.02"/></g></svg>
+                </button>
+                
+                <button id="btn-en" onclick="setLanguage('en')" class="hover:scale-110 transition-all opacity-40" title="English">
+                    <svg class="w-7 h-5 rounded-[2px]" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 55.2 38.4" style="enable-background:new 0 0 55.2 38.4" xml:space="preserve"><style type="text/css">.us-st0{fill:#B22234;} .us-st1{fill:#FFFFFF;} .us-st2{fill:#3C3B6E;}</style><g><path class="us-st0" d="M3.03,0h49.13c1.67,0,3.03,1.36,3.03,3.03v32.33c0,1.67-1.36,3.03-3.03,3.03H3.03C1.36,38.4,0,37.04,0,35.37 V3.03C0,1.36,1.36,0,3.03,0L3.03,0z"/><path class="us-st1" d="M0.02,2.73h55.17c0.01,0.1,0.02,0.2,0.02,0.31v2.94H0V3.03C0,2.93,0.01,2.83,0.02,2.73L0.02,2.73z M55.2,8.67 v3.24H0V8.67H55.2L55.2,8.67z M55.2,14.61v3.24H0v-3.24H55.2L55.2,14.61z M55.2,20.55v3.24H0v-3.24H55.2L55.2,20.55z M55.2,26.49 v3.24H0v-3.24H55.2L55.2,26.49z M55.2,32.43v2.93c0,0.1-0.01,0.21-0.02,0.31H0.02C0.01,35.58,0,35.47,0,35.37v-2.93H55.2 L55.2,32.43z"/><path class="us-st2" d="M20.8,0v20.68H0V3.03C0,1.36,1.36,0,3.03,0H20.8L20.8,0L20.8,0z"/><polygon class="us-st1" points="1.23,2.86 1.92,5.01 0.1,3.68 2.36,3.68 0.53,5.01 1.23,2.86"/><polygon class="us-st1" points="1.23,7.02 1.92,9.17 0.1,7.84 2.36,7.84 0.53,9.17 1.23,7.02"/><polygon class="us-st1" points="1.23,11.18 1.92,13.33 0.1,12 2.36,12 0.53,13.33 1.23,11.18"/><polygon class="us-st1" points="1.23,15.34 1.92,17.49 0.1,16.16 2.36,16.16 0.53,17.49 1.23,15.34"/><polygon class="us-st1" points="3.67,0.78 4.37,2.93 2.54,1.6 4.81,1.6 2.97,2.93 3.67,0.78"/><polygon class="us-st1" points="3.67,4.94 4.37,7.09 2.54,5.76 4.81,5.76 2.97,7.09 3.67,4.94"/><polygon class="us-st1" points="3.67,9.1 4.37,11.25 2.54,9.92 4.81,9.92 2.97,11.25 3.67,9.1"/><polygon class="us-st1" points="3.67,13.26 4.37,15.41 2.54,14.08 4.81,14.08 2.97,15.41 3.67,13.26"/><polygon class="us-st1" points="3.67,17.42 4.37,19.57 2.54,18.24 4.81,18.24 2.97,19.57 3.67,17.42"/><polygon class="us-st1" points="6.12,2.86 6.82,5.01 4.99,3.68 7.25,3.68 5.42,5.01 6.12,2.86"/><polygon class="us-st1" points="6.12,7.02 6.82,9.17 4.99,7.84 7.25,7.84 5.42,9.17 6.12,7.02"/><polygon class="us-st1" points="6.12,11.18 6.82,13.33 4.99,12 7.25,12 5.42,13.33 6.12,11.18"/><polygon class="us-st1" points="6.12,15.34 6.82,17.49 4.99,16.16 7.25,16.16 5.42,17.49 6.12,15.34"/><polygon class="us-st1" points="8.57,0.78 9.26,2.93 7.44,1.6 9.7,1.6 7.87,2.93 8.57,0.78"/><polygon class="us-st1" points="8.57,4.94 9.26,7.09 7.44,5.76 9.7,5.76 7.87,7.09 8.57,4.94"/><polygon class="us-st1" points="8.57,9.1 9.26,11.25 7.44,9.92 9.7,9.92 7.87,11.25 8.57,9.1"/><polygon class="us-st1" points="8.57,13.26 9.26,15.41 7.44,14.08 9.7,14.08 7.87,15.41 8.57,13.26"/><polygon class="us-st1" points="8.57,17.42 9.26,19.57 7.44,18.24 9.7,18.24 7.87,19.57 8.57,17.42"/><polygon class="us-st1" points="11.01,2.86 11.71,5.01 9.88,3.68 12.14,3.68 10.31,5.01 11.01,2.86"/><polygon class="us-st1" points="11.01,7.02 11.71,9.17 9.88,7.84 12.14,7.84 10.31,9.17 11.01,7.02"/><polygon class="us-st1" points="11.01,11.18 11.71,13.33 9.88,12 12.14,12 10.31,13.33 11.01,11.18"/><polygon class="us-st1" points="11.01,15.34 11.71,17.49 9.88,16.16 12.14,16.16 10.31,17.49 11.01,15.34"/><polygon class="us-st1" points="13.46,0.78 14.16,2.93 12.33,1.6 14.59,1.6 12.76,2.93 13.46,0.78"/><polygon class="us-st1" points="13.46,4.94 14.16,7.09 12.33,5.76 14.59,5.76 12.76,7.09 13.46,4.94"/><polygon class="us-st1" points="13.46,9.1 14.16,11.25 12.33,9.92 14.59,9.92 12.76,11.25 13.46,9.1"/><polygon class="us-st1" points="13.46,13.26 14.16,15.41 12.33,14.08 14.59,14.08 12.76,15.41 13.46,13.26"/><polygon class="us-st1" points="13.46,17.42 14.16,19.57 12.33,18.24 14.59,18.24 12.76,19.57 13.46,17.42"/><polygon class="us-st1" points="15.9,2.86 16.6,5.01 14.77,3.68 17.03,3.68 15.21,5.01 15.9,2.86"/><polygon class="us-st1" points="15.9,7.02 16.6,9.17 14.77,7.84 17.03,7.84 15.21,9.17 15.9,7.02"/><polygon class="us-st1" points="15.9,11.18 16.6,13.33 14.77,12 17.03,12 15.21,13.33 15.9,11.18"/><polygon class="us-st1" points="15.9,15.34 16.6,17.49 14.77,16.16 17.03,16.16 15.21,17.49 15.9,15.34"/><polygon class="us-st1" points="18.35,0.78 19.05,2.93 17.22,1.6 19.48,1.6 17.65,2.93 18.35,0.78"/><polygon class="us-st1" points="18.35,4.94 19.05,7.09 17.22,5.76 19.48,5.76 17.65,7.09 18.35,4.94"/><polygon class="us-st1" points="18.35,9.1 19.05,11.25 17.22,9.92 19.48,9.92 17.65,11.25 18.35,9.1"/><polygon class="us-st1" points="18.35,13.26 19.05,15.41 17.22,14.08 19.48,14.08 17.65,15.41 18.35,13.26"/><polygon class="us-st1" points="18.35,17.42 19.05,19.57 17.22,18.24 19.48,18.24 17.65,19.57 18.35,17.42"/></g></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-24 pb-16 px-4 md:px-12 flex flex-col gap-16 max-w-7xl mx-auto w-full overflow-hidden">
+        
+        <section class="relative flex flex-col items-center justify-center text-center gap-6 py-12">
+            <div class="absolute inset-0 tech-grid pointer-events-none opacity-40"></div>
+            <div class="absolute inset-0 hero-mask pointer-events-none"></div>
+            
+            <div class="relative w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-primary-container shadow-[0_0_30px_rgba(0,240,255,0.3)] neon-border transition-transform duration-500 hover:scale-110 cursor-pointer">
+                <img alt="Profile" class="object-cover w-full h-full" src="images/avatar.png"/>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0C10]/80"></div>
+            </div>
+            
+            <div class="flex flex-col gap-2 z-10">
+                <h1 class="font-h1 text-5xl md:text-7xl text-white tracking-tighter uppercase animate-idle inline-block">
+                    DANIEL LIMA DE SOUSA
+                </h1>
+                <div class="h-8 overflow-hidden flex items-center justify-center relative mt-2">
+                    <span id="tech-glitch-text" class="font-code-sm text-lg text-primary-container uppercase tracking-widest font-bold">Desenvolvimento FullStack</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center gap-4 z-10 mt-4 w-full">
+                <div class="flex justify-center gap-4 md:gap-8 flex-wrap w-full max-w-2xl px-4">
+                    <a href="#projects" class="flex-1 min-w-[140px] px-2 md:px-8 py-3 glass-panel rounded font-label-caps text-xs text-primary-container border border-primary-container/30 transition-all uppercase flex items-center justify-center gap-2 group btn-neon-hover hover:scale-105">
+                        <span class="material-symbols-outlined text-[18px]">folder_open</span> <span data-i18n="hero_projects">PROJETOS</span>
+                    </a>
+                    <a href="#about" class="flex-1 min-w-[140px] px-2 md:px-8 py-3 glass-panel rounded font-label-caps text-xs text-on-surface border border-outline-variant transition-all uppercase flex items-center justify-center gap-2 group btn-neon-hover hover:scale-105">
+                        <span class="material-symbols-outlined text-[18px]">person</span> <span data-i18n="hero_about">SOBRE</span>
+                    </a>
+                    <a href="#contact" class="flex-1 min-w-[140px] px-2 md:px-8 py-3 glass-panel rounded font-label-caps text-xs text-on-surface border border-outline-variant transition-all uppercase flex items-center justify-center gap-2 group btn-neon-hover hover:scale-105">
+                        <span class="material-symbols-outlined text-[18px]">mail</span> <span data-i18n="hero_contact">CONTATO</span>
+                    </a>
+                </div>
+
+                <div class="flex justify-center w-full mt-4 gap-6">
+                    <a href="https://github.com/DanielLS2000" target="_blank" class="text-on-surface-variant hover:text-[#00F0FF] transition-all hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/daniells2000/" target="_blank" class="text-on-surface-variant hover:text-[#00F0FF] transition-all hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="flex flex-col gap-6 mt-8" id="projects">
+            <h2 class="font-h2 text-3xl text-on-surface border-b border-surface-variant pb-2 inline-flex items-center gap-4" data-i18n="sec_projects">PROJETOS</h2>
+            
+            <div id="carousel-container" class="relative w-full h-[550px] md:h-[600px] flex items-center justify-center overflow-hidden perspective-1000 select-none cursor-grab active:cursor-grabbing">
+                <button id="prev-btn" class="absolute left-2 md:left-8 z-30 p-3 text-primary-container bg-[#0A0C10]/50 rounded-full hover:text-[#0A0C10] hover:bg-primary-container transition-all shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+                    <span class="material-symbols-outlined text-4xl">arrow_back_ios_new</span>
+                </button>
+                <div class="carousel-item absolute glass-panel rounded-lg overflow-hidden flex flex-col w-[320px] md:w-[420px] h-[450px] md:h-[500px] transition-colors duration-300" 
+                     data-i18n-title="proj1_title" data-title="QuestionMaker"
+                     data-i18n-desc="proj1_desc" data-desc=""
+                     data-i18n-tech="proj1_tech" data-tech=""
+                     data-img="images/projects/questionmaker.png"
+                     data-github=""
+                     data-demo="">
+                    <div class="w-full h-48 md:h-56 bg-surface-variant overflow-hidden">
+                        <img alt="Project 1" class="w-full h-full object-cover pointer-events-none" src="images/projects/questionmaker_home.png"/>
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col gap-4 flex-grow bg-[#111418]">
+                        <h3 class="card-title font-h3 text-2xl text-primary-container pointer-events-none" data-i18n="proj1_title"></h3>
+                        <p class="card-desc font-body-md text-on-surface-variant text-sm pointer-events-none" data-i18n="proj1_short"></p>
+                        <div class="flex flex-wrap gap-2 mt-auto pointer-events-none">
+                            <span class="px-3 py-1 bg-[#161B22] border-l-2 border-primary-container font-code-sm text-xs font-bold tracking-widest text-on-surface uppercase">Python</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item absolute glass-panel rounded-lg overflow-hidden flex flex-col w-[320px] md:w-[420px] h-[450px] md:h-[500px] transition-colors duration-300" 
+                     data-i18n-title="proj2_title" data-title=""
+                     data-i18n-desc="proj2_desc" data-desc=""
+                     data-i18n-tech="proj2_tech" data-tech=""
+                     data-img="images/projects/minervaai.png"
+                     data-github="https://github.com/DanielLS2000/MinervaChessAI"
+                     data-demo="">
+                    <div class="w-full h-48 md:h-56 bg-surface-variant overflow-hidden">
+                        <img alt="Project 2" class="w-full h-full object-cover pointer-events-none" src="images/projects/minervaai.png"/>
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col gap-4 flex-grow bg-[#111418]">
+                        <h3 class="card-title font-h3 text-2xl text-primary-container pointer-events-none" data-i18n="proj2_title"></h3>
+                        <p class="card-desc font-body-md text-on-surface-variant text-sm pointer-events-none" data-i18n="proj2_short"></p>
+                        <div class="flex flex-wrap gap-2 mt-auto pointer-events-none">
+                            <span class="px-3 py-1 bg-[#161B22] border-l-2 border-primary-container font-code-sm text-xs font-bold tracking-widest text-on-surface uppercase">Python</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item absolute glass-panel rounded-lg overflow-hidden flex flex-col w-[320px] md:w-[420px] h-[450px] md:h-[500px] transition-colors duration-300" 
+                     data-i18n-title="proj3_title" data-title=""
+                     data-i18n-desc="proj3_desc" data-desc=""
+                     data-i18n-tech="proj3_tech" data-tech=""
+                     data-img="images/projects/pricetracker.png"
+                     data-github="https://github.com/DanielLS2000/AmazonPriceTracker"
+                     data-demo="">
+                    <div class="w-full h-48 md:h-56 bg-surface-variant overflow-hidden">
+                        <img alt="Project 3" class="w-full h-full object-cover pointer-events-none" src="images/projects/pricetracker.png"/>
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col gap-4 flex-grow bg-[#111418]">
+                        <h3 class="card-title font-h3 text-2xl text-primary-container pointer-events-none" data-i18n="proj3_title"></h3>
+                        <p class="card-desc font-body-md text-on-surface-variant text-sm pointer-events-none" data-i18n="proj3_short"></p>
+                        <div class="flex flex-wrap gap-2 mt-auto pointer-events-none">
+                            <span class="px-3 py-1 bg-[#161B22] border-l-2 border-primary-container font-code-sm text-xs font-bold tracking-widest text-on-surface uppercase">Python</span>
+                            <span class="px-3 py-1 bg-[#161B22] border-l-2 border-primary-container font-code-sm text-xs font-bold tracking-widest text-on-surface uppercase">SQLite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item absolute glass-panel rounded-lg overflow-hidden flex flex-col w-[320px] md:w-[420px] h-[450px] md:h-[500px] transition-colors duration-300" 
+                     data-i18n-title="proj4_title" data-title=""
+                     data-i18n-desc="proj4_desc" data-desc=""
+                     data-i18n-tech="proj4_tech" data-tech=""
+                     data-img="images/projects/amazonclone.png"
+                     data-github="https://github.com/DanielLS2000/AmazonClone"
+                     data-demo="">
+                    <div class="w-full h-48 md:h-56 bg-surface-variant overflow-hidden">
+                        <img alt="Project 4" class="w-full h-full object-cover pointer-events-none" src="images/projects/amazonclone.png"/>
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col gap-4 flex-grow bg-[#111418]">
+                        <h3 class="card-title font-h3 text-2xl text-primary-container pointer-events-none" data-i18n="proj4_title"></h3>
+                        <p class="card-desc font-body-md text-on-surface-variant text-sm pointer-events-none" data-i18n="proj4_short"></p>
+                        <div class="flex flex-wrap gap-2 mt-auto pointer-events-none">
+                            <span class="px-3 py-1 bg-[#161B22] border-l-2 border-primary-container font-code-sm text-xs font-bold tracking-widest text-on-surface uppercase">JavaScript</span>
+                            <span class="px-3 py-1 bg-[#161B22] border-l-2 border-primary-container font-code-sm text-xs font-bold tracking-widest text-on-surface uppercase">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item absolute glass-panel rounded-lg overflow-hidden flex flex-col w-[320px] md:w-[420px] h-[450px] md:h-[500px] transition-colors duration-300" 
+                     data-i18n-title="proj5_title" data-title=""
+                     data-i18n-desc="proj5_desc" data-desc=""
+                     data-i18n-tech="proj5_tech" data-tech=""
+                     data-img="images/projects/djavu_2.png"
+                     data-github="https://github.com/es20231/eqp3"
+                     data-demo="">
+                    <div class="w-full h-48 md:h-56 bg-surface-variant overflow-hidden">
+                        <img alt="Project 4" class="w-full h-full object-cover pointer-events-none" src="images/projects/djavu.gif"/>
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col gap-4 flex-grow bg-[#111418]">
+                        <h3 class="card-title font-h3 text-2xl text-primary-container pointer-events-none" data-i18n="proj4_title"></h3>
+                        <p class="card-desc font-body-md text-on-surface-variant text-sm pointer-events-none" data-i18n="proj4_short"></p>
+                        <div class="flex flex-wrap gap-2 mt-auto pointer-events-none">
+                            <span class="px-3 py-1 bg-[#161B22] border-l-2 border-primary-container font-code-sm text-xs font-bold tracking-widest text-on-surface uppercase">JavaScript</span>
+                            <span class="px-3 py-1 bg-[#161B22] border-l-2 border-primary-container font-code-sm text-xs font-bold tracking-widest text-on-surface uppercase">Python</span>
+                            <span class="px-3 py-1 bg-[#161B22] border-l-2 border-primary-container font-code-sm text-xs font-bold tracking-widest text-on-surface uppercase">SQLite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="next-btn" class="absolute right-2 md:right-8 z-30 p-3 text-primary-container bg-[#0A0C10]/50 rounded-full hover:text-[#0A0C10] hover:bg-primary-container transition-all shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+                    <span class="material-symbols-outlined text-4xl">arrow_forward_ios</span>
+                </button>
+            </div>
+            <p class="text-center text-xs text-on-surface-variant mt-2 font-mono tracking-widest uppercase opacity-70" data-i18n="swipe_hint">Deslize para navegar ou clique para expandir</p>
+        </section>
+
+        <section class="flex flex-col gap-6" id="about">
+            <h2 class="font-h2 text-3xl text-on-surface border-b border-surface-variant pb-2 inline-flex items-center gap-4" data-i18n="sec_about">SOBRE</h2>
+            
+            <div class="glass-panel p-8 md:p-10 rounded-lg mb-4 hover:border-primary-container/30 transition-colors">
+                <h3 class="font-h3 text-2xl text-primary-container mb-4" data-i18n="about_title">MUITO PRAZER, SOU O DANIEL</h3>
+                <p class="font-body-md text-on-surface-variant leading-relaxed text-sm md:text-base" data-i18n="about_text">
+                    Olá! Sou Daniel Lima, cientista da computação e desenvolvedor de software focado em resolver problemas arquiteturais complexos. Minha atuação transita entre o desenvolvimento de APIs robustas, configuração de infraestrutura em nuvem, integrações nativas de IA e soluções móveis. Gosto de enxergar a tecnologia como uma ferramenta para construir ecossistemas funcionais — seja orquestrando a sincronização de dados offline com dispositivos IoT e FastAPI, seja desenvolvendo plataformas corporativas rápidas para clientes em WordPress. Fora das telas de código, sou fascinado por design narrativo: dedico boa parte do meu tempo livre desenvolvendo sistemas de <i>worldbuilding</i> estruturados para cenários de RPG de mesa e planejando campanhas épicas em jogos de grande estratégia.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 rounded-lg flex flex-col gap-4">
+                    <h3 class="font-h3 text-xl text-primary-container flex items-center gap-2 border-b border-outline-variant/30 pb-2">
+                        <span class="material-symbols-outlined text-[20px]">school</span> <span data-i18n="edu_title">FORMAÇÃO</span>
+                    </h3>
+                    <ul class="flex flex-col gap-4 mt-2">
+                        <li class="flex gap-4 items-center relative pl-4 before:absolute before:left-0 before:top-5 before:w-1.5 before:h-1.5 before:bg-primary-container before:rounded-full">
+                            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-outline-variant/50 hover:border-primary-container relative group flex-shrink-0 transition-colors">
+                                <img src="images/Formatura.png" alt="Formatura Daniel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <span class="font-label-caps text-on-surface-variant text-xs tracking-widest" data-i18n="edu_badge">FORMATURA</span>
+                                <span class="font-body-md text-on-surface font-medium" data-i18n="edu_course">Bacharelado em Ciência da Computação</span>
+                                <span class="text-[10px] font-mono tracking-widest uppercase opacity-50 mt-1" data-i18n="edu_uni">Universidade Federal do Piauí - Jul 2025</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-panel p-6 rounded-lg flex flex-col gap-4">
+                    <h3 class="font-h3 text-xl text-primary-container flex items-center gap-2 border-b border-outline-variant/30 pb-2">
+                        <span class="material-symbols-outlined text-[20px]">work</span> <span data-i18n="exp_title">EXPERIÊNCIA</span>
+                    </h3>
+                    <ul class="flex flex-col gap-4 mt-2 relative before:absolute before:left-1 before:top-4 before:bottom-0 before:w-[1px] before:bg-surface-variant">
+                        <li class="flex flex-col gap-1 relative pl-6">
+                            <div class="absolute left-[-2px] top-1.5 w-2 h-2 rounded-full bg-[#111318] border border-primary-container z-10"></div>
+                            <span class="font-label-caps text-on-surface-variant text-xs tracking-widest" data-i18n="exp_badge_1">ATUAL</span>
+                            <span class="font-body-md text-on-surface font-medium" data-i18n="exp_role_1">Desenvolvedor Freelance</span>
+                            <p class="text-sm text-on-surface-variant mt-1" data-i18n="exp_desc_1">Gerenciamento de integrações, criação de APIs, soluções nativas, páginas WordPress e desenvolvimento web.</p>
+                        </li>
+                        <li class="flex flex-col gap-1 relative pl-6 mt-4">
+                            <div class="absolute left-[-2px] top-1.5 w-2 h-2 rounded-full bg-[#111318] border border-outline-variant z-10"></div>
+                            <span class="font-label-caps text-on-surface-variant text-xs tracking-widest" data-i18n="exp_badge_2">BOLSISTA</span>
+                            <span class="font-body-md text-on-surface font-medium" data-i18n="exp_role_2">Desenvolvedor de Software e Infraestrutura</span>
+                            <p class="text-sm text-on-surface-variant mt-1" data-i18n="exp_desc_2">Implementação de infraestrutura local via hipervisores e soluções IoT utilizando Raspberry Pi. Integração de sensores GPS e sistemas de armazenamento embarcado para coleta de dados.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="flex flex-col gap-6 pb-12" id="contact">
+            <h2 class="font-h2 text-3xl text-on-surface border-b border-surface-variant pb-2 inline-flex items-center gap-4" data-i18n="sec_contact">CONTATO</h2>
+            <div class="glass-panel p-8 rounded-lg max-w-2xl mx-auto w-full">
+                <form action="https://formspree.io/f/mvzlgwln" method="POST" class="flex flex-col gap-6">
+    
+                    <div class="flex flex-col gap-2">
+                        <label class="font-code-sm text-xs text-primary-container uppercase tracking-wider" data-i18n="form_name_lbl">Nome</label>
+                        <input name="nome" required data-i18n="form_name_plc" class="bg-transparent border-0 border-b-2 border-outline-variant text-on-surface focus:ring-0 focus:border-primary-container transition-colors py-2 px-0" placeholder="Insira seu nome" type="text"/>
+                    </div>
+                    
+                    <div class="flex flex-col gap-2">
+                        <label class="font-code-sm text-xs text-primary-container uppercase tracking-wider" data-i18n="form_email_lbl">Email</label>
+                        <input name="email" required data-i18n="form_email_plc" class="bg-transparent border-0 border-b-2 border-outline-variant text-on-surface focus:ring-0 focus:border-primary-container transition-colors py-2 px-0" placeholder="Insira seu email" type="email"/>
+                    </div>
+                    
+                    <div class="flex flex-col gap-2">
+                        <label class="font-code-sm text-xs text-primary-container uppercase tracking-wider" data-i18n="form_msg_lbl">Mensagem</label>
+                        <textarea name="mensagem" required data-i18n="form_msg_plc" class="bg-transparent border-0 border-b-2 border-outline-variant text-on-surface focus:ring-0 focus:border-primary-container transition-colors py-2 px-0 resize-none" placeholder="Sua mensagem..." rows="4"></textarea>
+                    </div>
+                    
+                    <button class="mt-4 bg-primary-container text-[#0A0C10] font-label-caps uppercase py-3 px-6 rounded font-bold transition-all self-start flex items-center gap-2 btn-neon-hover hover:scale-105" type="submit">
+                        <span data-i18n="form_btn">ENVIAR</span> <span class="material-symbols-outlined text-[18px]">send</span>
+                    </button>
+
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="w-full flex flex-col md:flex-row items-center px-12 gap-6 bg-[#0A0C10] border-t border-[#21262D] py-8 justify-start">
+        <div class="flex gap-6 pr-8 border-r border-[#21262D]">
+            <a class="font-mono text-[10px] tracking-widest uppercase text-gray-500 hover:text-[#00F0FF] transition-all" href="https://github.com/DanielLS2000" target="_blank">GITHUB</a>
+            <a class="font-mono text-[10px] tracking-widest uppercase text-gray-500 hover:text-[#00F0FF] transition-all" href="https://www.linkedin.com/in/daniells2000/" target="_blank">LINKEDIN</a>
+        </div>
+        <div class="text-[#00F0FF] font-bold font-mono text-[10px] tracking-widest uppercase" data-i18n="footer_rights">
+            © 2026 DANIEL LIMA DE SOUSA. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <a aria-label="Contato via WhatsApp" class="fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform z-50 hover:bg-[#20b958]" href="https://wa.me/5586995561991" target="_blank">
+        <svg viewBox="0 0 24 24" fill="white" class="w-8 h-8">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/85 backdrop-blur-sm opacity-0 transition-opacity duration-300 p-4">
+        <div class="glass-panel w-full max-w-6xl rounded-xl overflow-hidden flex flex-col md:flex-row relative transform scale-95 transition-transform duration-300 border border-[#00f0ff]/30 shadow-[0_0_50px_rgba(0,240,255,0.15)]" id="modal-content">
+            <button id="close-modal" class="absolute top-4 right-4 z-10 text-white hover:text-[#0A0C10] hover:bg-primary-container bg-black/60 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div class="w-full md:w-1/2 h-64 md:h-auto bg-surface-variant relative">
+                <img id="modal-img" src="" alt="Projeto" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-[#0A0C10]/90 md:block hidden"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0A0C10]/95 to-transparent md:hidden"></div>
+            </div>
+            <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col gap-6 bg-[#0A0C10]/95">
+                <div>
+                    <h3 id="modal-title" class="font-h1 text-4xl text-white tracking-tighter uppercase mb-2">Título</h3>
+                    <p id="modal-tech" class="font-code-sm text-primary-container text-sm md:text-base font-bold tracking-widest uppercase">Techs</p>
+                </div>
+                <div class="w-16 h-[2px] bg-primary-container/50"></div>
+                <p id="modal-desc" class="font-body-md text-on-surface-variant text-base mt-2 flex-grow leading-relaxed">Descrição do projeto...</p>
+                <div class="flex gap-4 mt-8 pt-6 border-t border-outline-variant/30">
+                    <a id="modal-github" href="#" target="_blank" class="px-6 py-3 border border-outline-variant text-white font-label-caps text-sm rounded transition-all flex items-center gap-2 tracking-widest">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        GITHUB
+                    </a>
+                    <a id="modal-demo" href="#" target="_blank" class="px-6 py-3 bg-primary-container text-[#0A0C10] font-bold font-label-caps text-sm rounded transition-all flex items-center gap-2 tracking-widest hover:bg-white hover:scale-105 hover:shadow-[0_0_15px_rgba(0,240,255,0.6)]">
+                        <span class="material-symbols-outlined text-[18px]">open_in_new</span> LIVE DEMO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 1. SISTEMA DE TRADUÇÃO (i18n)
+        // ==========================================
+        const translations = {
+            pt: {
+                nav_about: "SOBRE",
+                nav_projects: "PROJETOS",
+                nav_contact: "CONTATO",
+                btn_resume: "CURRÍCULO",
+                hero_projects: "PROJETOS",
+                hero_about: "SOBRE",
+                hero_contact: "CONTATO",
+                sec_projects: "PROJETOS",
+                sec_about: "SOBRE",
+                sec_contact: "CONTATO",
+                
+                // Textos Sobre Mim
+                about_title: "PRAZER, SOU O DANIEL",
+                about_text: "Olá! Sou Daniel Lima, cientista da computação e desenvolvedor de software focado em resolver problemas arquiteturais complexos. Minha atuação varia entre o desenvolvimento de APIs robustas, configuração de infraestrutura em nuvem, integrações nativas de IA e soluções desktop. Gosto de enxergar a tecnologia como uma ferramenta para construir ecossistemas funcionais e harmonicos.",
+                
+                // Formação & Exp
+                edu_title: "FORMAÇÃO",
+                edu_badge: "FORMATURA",
+                edu_course: "Bacharelado em Ciência da Computação",
+                edu_uni: "Universidade Federal do Piauí - Jul 2025",
+                exp_title: "EXPERIÊNCIA",
+                exp_badge_1: "ATUAL",
+                exp_role_1: "Desenvolvedor Freelance",
+                exp_desc_1: "Gerenciamento de integrações, criação de APIs, soluções nativas, páginas WordPress e desenvolvimento web.",
+                exp_badge_2: "BOLSISTA",
+                exp_role_2: "Desenvolvedor de Software e Infraestrutura",
+                exp_desc_2: "Implementação de infraestrutura local via hipervisores e soluções IoT utilizando Raspberry Pi. Integração de sensores GPS e sistemas de armazenamento embarcado para coleta de dados.",
+                
+                // Formato Contato
+                form_name_lbl: "Nome",
+                form_name_plc: "Insira seu nome",
+                form_email_lbl: "Email",
+                form_email_plc: "Insira seu email",
+                form_msg_lbl: "Mensagem",
+                form_msg_plc: "Sua mensagem...",
+                form_btn: "ENVIAR",
+                footer_rights: "© 2026 DANIEL LIMA DE SOUSA. TODOS OS DIREITOS RESERVADOS.",
+                swipe_hint: "Deslize para navegar ou clique para expandir",
+
+                // Projetos Individuais
+                proj1_title: "QuestionMaker",
+                proj1_short: "Aplicativo Desktop para criação de questões academicas com integração com IA.",
+                proj1_desc: "O QuestionMaker é uma aplicação Desktop desenvolvida para a geração, edição e gestão de questões académicas. Utilizando Inteligência Artificial (modelos da Google e OpenRouter), o sistema acelera a criação de conteúdos educacionais com uma interface simples, rápida e adaptável.",
+                proj1_tech: "Python, PySide6, Requests, Google Apps Script, PyInstaller & Inno Setup",
+
+                proj2_title: "MinervaChessAI",
+                proj2_short: "Uma inteligencia artificial capaz de jogar xadrez, com a possibilidade de jogar contra um jogador, contra si mesma e contra o bot de xadrez StockFish.",
+                proj2_desc: "A MinervaChessAI foi desenvolvida para uma competição de xadrez de IA no ICEV, o projeto consiste de uma IA capaz de jogar xadrez desenvolvida por mim mesmo, com opções para jogar contra um usuario, contra si mesma e contra a IA do StockFish, na epoca considerada a mais poderosa IA de Xadrez.",
+                proj2_tech: "Python, Chess, PyQt5",
+
+                proj3_title: "PriceTracker",
+                proj3_short: "Um aplicativo WebScrapper que registra os preços de um produto e mostra sua variação ao longo do tempo.",
+                proj3_desc: "Este projeto foi desenvolvido como um exercício de web scraping. Trata-se de uma aplicação web que utiliza Python para obter dados da loja da Amazon e exibi-los ao usuário. Ela também oferece a opção de cadastrar um termo de busca para ser rastreado ao longo do tempo, além de um script que realiza o rastreamento dos termos de busca cadastrados, salvando o preço ao longo do tempo.",
+                proj3_tech: "Python, SQLite, BeautifulSoup, Playwright",
+
+                proj4_title: "AmazonClone",
+                proj4_short: "Um simples clone da página inicial da Amazon e alguns recursos como carrinho de compras.",
+                proj4_desc: "Este projeto foi desenvolvido como um exercício de web development. Trata-se de uma aplicação web que tenta imitar a pagina da amazon com todas suas features envolvendo navegação, paginas de produto e carrinho de compras.",
+                proj4_tech: "JavaScript, HTML/CSS, ReactJS, Firebase",
+
+                proj5_title: "Djavu",
+                proj5_short: "Um projeto da faculdade onde tive de trabalhar num grupo de 5 para fazer um clone do Instagram.",
+                proj5_desc: "Este é um projeto desenvolvido como parte da disciplina de Engenharia de Software II na Universidade Federal do Piauí (UFPI). Djavú é um clone do Instagram, ou seja, uma rede social de compartilhamento de fotos. Feito com Backend em Flask e Frontend em ReactJS, o programa conta com todas as funcionalidades padrão do instagram, desde autenticação, a envio e publicação de fotos, comentarios e timeline.",
+                proj5_tech: "JavaScript, HTML/CSS, ReactJS, Python, SQLite, Flask",
+            },
+            en: {
+                nav_about: "ABOUT",
+                nav_projects: "PROJECTS",
+                nav_contact: "CONTACT",
+                btn_resume: "RESUME",
+                hero_projects: "PROJECTS",
+                hero_about: "ABOUT",
+                hero_contact: "CONTACT",
+                sec_projects: "PROJECTS",
+                sec_about: "ABOUT",
+                sec_contact: "CONTACT",
+
+                // Textos Sobre Mim
+                about_title: "NICE TO MEET YOU, I'M DANIEL",
+                about_text: "Hello! I'm Daniel Lima, a computer scientist and software developer focused on solving complex architectural problems. My work ranges from building robust APIs and configuring cloud infrastructure to native AI integrations and desktop solutions. I like to view technology as a tool to build functional and harmonious ecosystems.",
+
+                // Formação & Exp
+                edu_title: "EDUCATION",
+                edu_badge: "GRADUATION",
+                edu_course: "Bachelor's in Computer Science",
+                edu_uni: "Federal University of Piauí - Jul 2025",
+                exp_title: "EXPERIENCE",
+                exp_badge_1: "CURRENT",
+                exp_role_1: "Freelance Developer",
+                exp_desc_1: "Management of integrations, API creation, native solutions, WordPress pages, and web development.",
+                exp_badge_2: "SCHOLAR",
+                exp_role_2: "Software & Infrastructure Developer",
+                exp_desc_2: "Implementation of local infrastructure via hypervisors and IoT solutions using Raspberry Pi. Integration of GPS sensors and embedded storage systems for data collection.",
+                
+                // Formato Contato
+                form_name_lbl: "Name",
+                form_name_plc: "Enter your name",
+                form_email_lbl: "Email",
+                form_email_plc: "Enter your email",
+                form_msg_lbl: "Message",
+                form_msg_plc: "Your message...",
+                form_btn: "SEND",
+                footer_rights: "© 2026 DANIEL LIMA DE SOUSA. ALL RIGHTS RESERVED.",
+                swipe_hint: "Swipe to navigate or click to expand",
+
+                // Projetos Individuais
+                proj1_title: "QuestionMaker",
+                proj1_short: "Desktop application for creating academic questions with AI integration.",
+                proj1_desc: "QuestionMaker is a Desktop application developed for generating, editing, and managing academic questions. Using Artificial Intelligence (Google and OpenRouter models), the system accelerates the creation of educational content with a simple, fast, and adaptable interface.",
+                proj1_tech: "Python, PySide6, Requests, Google Apps Script, PyInstaller & Inno Setup",
+
+                proj2_title: "MinervaChessAI",
+                proj2_short: "An artificial intelligence capable of playing chess, with the option to play against a human, itself, and the StockFish chess bot.",
+                proj2_desc: "MinervaChessAI was developed for an AI chess competition at ICEV. The project consists of a chess-playing AI developed entirely by me, featuring options to play against a user, against itself, and against StockFish, which at the time was considered the most powerful chess AI.",
+                proj2_tech: "Python, Chess, PyQt5",
+
+                proj3_title: "PriceTracker",
+                proj3_short: "A WebScraper application that records product prices and displays their variation over time.",
+                proj3_desc: "This project was developed as a web scraping exercise. It's a web application that uses Python to fetch data from the Amazon store and display it to the user. It also offers the option to register a search term to be tracked over time, along with a script that tracks the registered search terms, saving the price history over time.",
+                proj3_tech: "Python, SQLite, BeautifulSoup, Playwright",
+
+                proj4_title: "AmazonClone",
+                proj4_short: "A simple clone of the Amazon homepage with features like a shopping cart.",
+                proj4_desc: "This project was developed as a web development exercise. It's a web application that attempts to mimic the Amazon website with all its features, including navigation, product pages, and a shopping cart.",
+                proj4_tech: "JavaScript, HTML/CSS, ReactJS, Firebase",
+
+                proj5_title: "Djavu",
+                proj5_short: "A college project where I worked in a group of 5 to build an Instagram clone.",
+                proj5_desc: "This project was developed as part of the Software Engineering II course at the Federal University of Piauí (UFPI). Djavú is an Instagram clone, a photo-sharing social network. Built with a Flask Backend and ReactJS Frontend, the application features all standard Instagram functionalities, from authentication to uploading and publishing photos, comments, and a timeline.",
+                proj5_tech: "JavaScript, HTML/CSS, ReactJS, Python, SQLite, Flask",
+            }
+        };
+
+        function setLanguage(lang) {
+            // 1. Traduz todos os textos visíveis com a tag data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[lang][key];
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+
+            // 2. Atualiza os dados "invisíveis" dos cards para quando o Modal for aberto
+            document.querySelectorAll('.carousel-item').forEach(item => {
+                const titleKey = item.getAttribute('data-i18n-title');
+                const descKey = item.getAttribute('data-i18n-desc');
+                const techKey = item.getAttribute('data-i18n-tech');
+
+                if (titleKey) {
+                    item.setAttribute('data-title', translations[lang][titleKey]);
+                    const titleEl = item.querySelector('.card-title');
+                    if (titleEl) titleEl.innerText = translations[lang][titleKey];
+                }
+                if (descKey) {
+                    item.setAttribute('data-desc', translations[lang][descKey]);
+                }
+                if (techKey) {
+                    item.setAttribute('data-tech', translations[lang][techKey]);
+                }
+            });
+
+            // 3. Estiliza as bandeiras de idioma
+            document.getElementById('btn-pt').classList.toggle('opacity-40', lang !== 'pt');
+            document.getElementById('btn-en').classList.toggle('opacity-40', lang !== 'en');
+
+            // 4. Update Resume Link
+            const resumeBtn = document.getElementById('resume-btn');
+            if (resumeBtn) {
+                resumeBtn.href = lang === 'pt' ? './curriculos/curriculo_pt.pdf' : './curriculos/curriculo_eng.pdf';
+            }
+
+            localStorage.setItem('portfolio_lang', lang);
+        }
+
+        const savedLang = localStorage.getItem('portfolio_lang') || 'pt';
+        setLanguage(savedLang);
+
+
+        // ==========================================
+        // 2. GLITCH EFEITO
+        // ==========================================
+        const techStack = ["FullStack Development", "Cloud DevOps", "Desktop Development", "AI Integration", "Machine Learning"];
+        let techIndex = 0;
+        const glitchElement = document.getElementById("tech-glitch-text");
+
+        setInterval(() => {
+            glitchElement.classList.add("glitch-anim");
+            setTimeout(() => {
+                techIndex = (techIndex + 1) % techStack.length;
+                glitchElement.innerText = techStack[techIndex];
+            }, 150); 
+            setTimeout(() => glitchElement.classList.remove("glitch-anim"), 300);
+        }, 3000);
+
+        // ==========================================
+        // 3. CARROSSEL DE PROJETOS E ARRASTE
+        // ==========================================
+        const carouselContainer = document.getElementById('carousel-container');
+        const carouselItems = Array.from(document.querySelectorAll('.carousel-item'));
+        
+        let targetIndex = 1;      
+        let virtualIndex = 1;     
+        let isDragging = false;
+        let startX = 0;
+        let currentDragX = 0;
+        let dragOffset = 0;
+        let autoPlayId;
+        let hasDragged = false;   
+
+        function renderCarousel() {
+            if (!isDragging) {
+                virtualIndex += (targetIndex - virtualIndex) * 0.1; 
+            } else {
+                const dragResistance = window.innerWidth * 0.22; 
+                virtualIndex = targetIndex - (dragOffset / dragResistance);
+            }
+
+            const isMobile = window.innerWidth < 768;
+            const translateFactor = isMobile ? 85 : 95; 
+
+            carouselItems.forEach((item, i) => {
+                let vIndexMod = ((virtualIndex % carouselItems.length) + carouselItems.length) % carouselItems.length;
+                let diff = i - vIndexMod;
+                
+                while (diff > carouselItems.length / 2) diff -= carouselItems.length;
+                while (diff < -carouselItems.length / 2) diff += carouselItems.length;
+
+                let absDiff = Math.abs(diff);
+                let boundedDiff = Math.min(absDiff, 1);
+                
+                let scale = 1 - (0.25 * boundedDiff);
+                let opacity = 1 - (0.6 * boundedDiff);
+                let translateX = diff * translateFactor;
+                
+                if (absDiff > 1.2) opacity = 0;
+
+                let zIndex = absDiff < 0.5 ? 20 : 10;
+
+                item.style.transform = `translateX(${translateX}%) scale(${scale})`;
+                item.style.opacity = opacity;
+                item.style.zIndex = zIndex;
+            });
+
+            requestAnimationFrame(renderCarousel);
+        }
+
+        requestAnimationFrame(renderCarousel);
+
+        function moveNext() { targetIndex++; }
+        function movePrev() { targetIndex--; }
+
+        document.getElementById('next-btn').addEventListener('click', (e) => { 
+            e.stopPropagation(); moveNext(); resetAutoPlay(); 
+        });
+        document.getElementById('prev-btn').addEventListener('click', (e) => { 
+            e.stopPropagation(); movePrev(); resetAutoPlay(); 
+        });
+
+        const handleDragStart = (x) => {
+            isDragging = true;
+            hasDragged = false;
+            startX = x;
+            currentDragX = x;
+            dragOffset = 0;
+            clearInterval(autoPlayId);
+            targetIndex = virtualIndex; 
+        };
+
+        const handleDragMove = (x) => {
+            if (!isDragging) return;
+            currentDragX = x;
+            dragOffset = x - startX;
+            if (Math.abs(dragOffset) > 10) hasDragged = true;
+        };
+
+        const handleDragEnd = () => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const dragAmount = dragOffset; 
+            if (dragAmount < -70) {
+                targetIndex = Math.ceil(targetIndex);
+            } else if (dragAmount > 70) {
+                targetIndex = Math.floor(targetIndex);
+            } else {
+                targetIndex = Math.round(virtualIndex);
+            }
+            
+            resetAutoPlay();
+        };
+
+        carouselContainer.addEventListener('mousedown', (e) => handleDragStart(e.pageX));
+        window.addEventListener('mousemove', (e) => handleDragMove(e.pageX));
+        window.addEventListener('mouseup', handleDragEnd);
+        
+        carouselContainer.addEventListener('touchstart', (e) => handleDragStart(e.touches[0].clientX), {passive: true});
+        window.addEventListener('touchmove', (e) => handleDragMove(e.touches[0].clientX), {passive: true});
+        window.addEventListener('touchend', handleDragEnd);
+
+        function startAutoPlay() { autoPlayId = setInterval(moveNext, 5000); }
+        function resetAutoPlay() { clearInterval(autoPlayId); startAutoPlay(); }
+        startAutoPlay();
+
+        // ==========================================
+        // 4. LÓGICA DO MODAL
+        // ==========================================
+        const modal = document.getElementById('project-modal');
+        const modalContent = document.getElementById('modal-content');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        const mTitle = document.getElementById('modal-title');
+        const mTech = document.getElementById('modal-tech');
+        const mDesc = document.getElementById('modal-desc');
+        const mImg = document.getElementById('modal-img');
+        const mGithub = document.getElementById('modal-github');
+        const mDemo = document.getElementById('modal-demo');
+
+        carouselItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (hasDragged) {
+                    e.preventDefault();
+                    return;
+                }
+                
+                mTitle.innerText = item.getAttribute('data-title');
+                mDesc.innerText = item.getAttribute('data-desc');
+                mTech.innerText = item.getAttribute('data-tech');
+                mImg.src = item.getAttribute('data-img');
+
+                const gitUrl = item.getAttribute('data-github');
+                const demoUrl = item.getAttribute('data-demo');
+
+                if(gitUrl) {
+                    mGithub.href = gitUrl;
+                    mGithub.className = "px-6 py-3 border border-outline-variant hover:border-primary-container text-white hover:text-primary-container font-label-caps text-sm rounded transition-all flex items-center gap-2 tracking-widest";
+                } else {
+                    mGithub.removeAttribute('href');
+                    mGithub.className = "px-6 py-3 border border-outline-variant text-white font-label-caps text-sm rounded flex items-center gap-2 opacity-30 cursor-not-allowed pointer-events-none tracking-widest";
+                }
+
+                if(demoUrl) {
+                    mDemo.href = demoUrl;
+                    mDemo.className = "px-6 py-3 bg-primary-container text-[#0A0C10] hover:bg-white font-bold font-label-caps text-sm rounded transition-all flex items-center gap-2 tracking-widest hover:scale-105 hover:shadow-[0_0_15px_rgba(0,240,255,0.6)]";
+                } else {
+                    mDemo.removeAttribute('href');
+                    mDemo.className = "px-6 py-3 bg-primary-container text-[#0A0C10] font-bold font-label-caps text-sm rounded flex items-center gap-2 opacity-30 cursor-not-allowed pointer-events-none tracking-widest";
+                }
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modalContent.classList.remove('scale-95');
+                    modalContent.classList.add('scale-100');
+                }, 10);
+                clearInterval(autoPlayId); 
+            });
+        });
+
+        function fecharModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                startAutoPlay(); 
+            }, 300);
+        }
+
+        closeModalBtn.addEventListener('click', fecharModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) fecharModal();
+        });
+    </script>
+</body>
 </html>
